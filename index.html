@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Bugdet</title>
+</head>
+<body>
+    <h1>Gestion de budget</h1>
+
+        <!-- Formulaire pour ajouter une transaction -->
+
+    <form id="addTransactionForm">
+        <input type="number" id="amount" placeholder="Montant" required>
+        <select id="type">
+            <option value="income">Revenu</option>
+            <option value="expense">Dépense</option>
+        </select>
+        <select id="category_id" required>
+            <option value="1">Nourriture</option>
+            <option value="2">Loisirs</option>
+            <option value="3">Logement</option>
+            <option value="4">Facture</option>
+        </select>
+        <input type="date" id="date" required>
+        <input type="text" id="description" placeholder="Description">
+        <button type="submit">Ajouter</button>
+    </form>
+
+    <h2>Transactions</h2>
+    <ul id="transactionList"></ul>
+
+    <script src="./js/main.js"></script>
+</body>
+</html>
