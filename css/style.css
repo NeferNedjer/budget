@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Nunito", sans-serif;
+    text-decoration: none;
+    list-style-type: none;
+    color: #fff;
+}
+
+body {
+    background-size: 100% 100%;
+    background-position: 0px 0px;
+    background-image: radial-gradient(98% 64% at 116% 86%, #278c2a 0%, #000 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#addTransactionForm {
+    margin: 50px;
+    color: #333;
+}
+
+#addTransactionForm input {
+    padding: 10px;
+    color: #333;
+    border-radius: 8px;
+}
+#addTransactionForm select {
+    padding: 10px;
+    color: #333;
+    border-radius: 8px;
+}
+
+#addTransactionForm option {
+    color: #333;
+}
+
+#addTransactionForm button {
+    padding: 10px;
+    color: #333;
+    border-radius: 8px;
+}
+
+#transactionList {
+    margin: 20px;
+}
+
+#transactionList >li {
+    width: 100%;
+    margin: 10px;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    background-color: #e71b1b;
+    color: #fff;
+}
+
+#revenuList {
+    margin: 20px;
+}
+
+#revenuList >li {
+    width: 100%;
+    margin: 10px;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    background-color: #31ab21;
+    color: #fff;
+}
+
+#containerType {
+    display: flex;
+    color: #fff;
+}
+
+#totalDepense {
+    color: #fff;
+}
+
+#totalDepense {
+    width: 100%;
+    margin: 10px;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    background-color: #e71b1b;
+    color: #fff;
+}
+
+#total-depense {
+    margin: 10px;
+}
+
+#totalRevenu {
+    width: 100%;
+    margin: 10px;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    background-color: #31ab21;
+    color: #fff;
+}
+
+#total-revenu {
+    margin: 10px;
+}
+
+
+
+h1 {
+    margin-bottom: 2rem;
+    margin-left: 50px;
+}
+
+h2 {
+    margin-left: 50px;
+}

@@ -14,22 +14,46 @@
     <form id="addTransactionForm">
         <input type="number" id="amount" placeholder="Montant" required>
         <select id="type">
-            <option value="income">Revenu</option>
             <option value="expense">Dépense</option>
+            <option value="income">Revenu</option>
         </select>
         <select id="category_id" required>
             <option value="1">Nourriture</option>
             <option value="2">Loisirs</option>
             <option value="3">Logement</option>
             <option value="4">Facture</option>
+            <option value="5">Revenu</option>
+            option
         </select>
-        <input type="date" id="date" required>
         <input type="text" id="description" placeholder="Description">
         <button type="submit">Ajouter</button>
     </form>
+    <div id="validation" style="display: none;"></div>
+    <div id="containerType">
+        <div id="depenses">
+            <h2>Dépenses :</h2>
+            <ul id="transactionList"></ul>
+        </div>
+        <div id="total-depense">
+            <h2>Total des Dépenses :</h2>
+            <div id="totalDepense"></div>
+        </div>
+        <div id="revenus">
+            <h2>Revenus :</h2>
+            <ul id="revenuList"></ul>
+        </div>
+        <div id="total-revenu">
+            <h2>Total des Revenus :</h2>
+            <div id="totalRevenu"></div>
+        </div>
+        <div id="solde">
+            <h2>Solde :</h2>
+            <span id="soldeFinal"></span>
+        </div>
+    </div>
 
-    <h2>Transactions</h2>
-    <ul id="transactionList"></ul>
+    
+    <div id="total-depenses"></div>
 
     <script src="./js/main.js"></script>
 </body>

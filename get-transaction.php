@@ -4,7 +4,7 @@ header('Content-type: application/json');
 
 $pdo = new PDO('mysql:host=localhost;dbname=budget', 'root', '');
 
-$query = "SELECT t.id, t.amount, t.type, t.date, t.description, c.name AS category FROM transactions t JOIN categories c ON t.category_id = c.id";
+$query = "SELECT t.id, t.amount, t.type, t.description, c.name AS category FROM transactions t JOIN categories c ON t.category_id = c.id WHERE t.type = 'expense'";
 
 $stmt = $pdo->query($query);
 
