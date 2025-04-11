@@ -7,9 +7,9 @@ function loadTransactions() {
             const transactionList = document.getElementById('transactionList');
             transactionList.innerHTML = '';
             data.forEach(transaction => {
-                const li = document.createelement('li');
+                const li = document.createElement('li');
                 li.innerText = `${transaction.date} - ${transaction.amount} € (${transaction.category}) -${transaction.description}`;
-                transaction.appendChild(li);
+                transactionList.appendChild(li);
             })
         })
 }
