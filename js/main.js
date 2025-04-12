@@ -4,53 +4,63 @@ function loadTransactions() {
     fetch('get-transaction.php')
         .then(res => res.json())
         .then(data => {
-            const transactionList = document.getElementById('transactionList');
-            transactionList.innerHTML = '';
+            const tbody = document.getElementById('depensesBody');
+            tbody.innerHTML = '';
             data.forEach(transaction => {
-                const li = document.createElement('li');
-                li.innerText = `${transaction.description} : ${transaction.amount} `;
-                transactionList.appendChild(li);
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td style="color:#f41d1d;">${parseFloat(transaction.amount).toFixed(2)} €</td>
+                    <td>${transaction.category}</td>
+                    <td>${transaction.description}</td>
+                `;
+                tbody.appendChild(tr);
             })
         })
+        .catch(err => console.error("Erreur de chargement des dépenses : ", err));
 }
 
 function loadRevenus() {
     fetch('get-revenu.php')
         .then(res => res.json())
         .then(data => {
-            const revenuList = document.getElementById('revenuList');
-            revenuList.innerHTML = '';
+            const tbody = document.getElementById('revenusBody');
+            tbody.innerHTML = '';
             data.forEach(revenu => {
-                const li = document.createElement('li');
-                li.innerText = `${revenu.description} : ${revenu.amount} `;
-                revenuList.appendChild(li)
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td style="color:#35f41c;">${parseFloat(revenu.amount).toFixed(2)} €</td>
+                    <td>${revenu.category}</td>
+                    <td>${revenu.description}</td>
+                `;
+                tbody.appendChild(tr)
             })
         })
+        .catch(err => console.error("Erreur de chargement des revenus : ", err));
 }
 
-function loadTotalDepenses() {
-    fetch('total-depense.php')
-        .then(res => res.json())
-        .then(data => {
-            const totalDepense = document.getElementById('totalDepense');
-            const p = document.createElement('p')
-            p.innerText = `${data} €`;
-            totalDepense.appendChild(p);
-        })
+// function loadTotalDepenses() {
+//     fetch('total-depense.php')
+//         .then(res => res.json())
+//         .then(data => {
+//             const totalDepense = document.getElementById('totalDepense');
+//             const p = document.createElement('p')
+//             p.innerText = `${data} €`;
+//             totalDepense.appendChild(p);
+//         })
         
-}
+// }
 
-function loadTotalRevenus() {
-    fetch('total-revenu.php')
-        .then(res => res.json())
-        .then(data => {
-            const totalRevenu = document.getElementById('totalRevenu');
-            const p = document.createElement('p')
-            p.innerText = `${data} €`;
-            totalRevenu.appendChild(p);
-        })
+// function loadTotalRevenus() {
+//     fetch('total-revenu.php')
+//         .then(res => res.json())
+//         .then(data => {
+//             const totalRevenu = document.getElementById('totalRevenu');
+//             const p = document.createElement('p')
+//             p.innerText = `${data} €`;
+//             totalRevenu.appendChild(p);
+//         })
         
-}
+// }
 
 // Enregistrer une nouvelle transaction
 
@@ -90,7 +100,7 @@ document.getElementById('addTransactionForm').addEventListener('submit', functio
         })
 })
 
-loadTotalRevenus()
-loadTotalDepenses()
+
+
 loadTransactions();
 loadRevenus()

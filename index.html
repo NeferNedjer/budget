@@ -30,31 +30,47 @@
     </form>
     <div id="validation" style="display: none;"></div>
     <div id="containerType">
+        
         <div id="depenses">
             <h2>Dépenses :</h2>
-            <ul id="transactionList"></ul>
+            <table id="depensesTable" border="1" cellpadding="10" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Montant</th>
+                        <th>Catégorie</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody id="depensesBody"></tbody>
+            </table>
         </div>
-        <div id="total-depense">
-            <h2>Total des Dépenses :</h2>
-            <div id="totalDepense"></div>
-        </div>
+
         <div id="revenus">
             <h2>Revenus :</h2>
-            <ul id="revenuList"></ul>
+            <table id="revenusTable" border="1" cellpadding="10" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Montant</th>
+                        <th>Catégorie</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody id="revenusBody"></tbody>
+            </table>
         </div>
-        <div id="total-revenu">
-            <h2>Total des Revenus :</h2>
-            <div id="totalRevenu"></div>
-        </div>
-        <div id="solde">
-            <h2>Solde :</h2>
-            <span id="soldeFinal"></span>
-        </div>
+        
     </div>
 
+    <!-- <h2>mon tableau de bord</h2> -->
+    <div id="dashboard">
+        <div class="card" id="revenus" >Revenus : <span id="totalRevenus">...</span></div>
+        <div class="card" id="depenses" >Dépenses : <span id="totalDepenses">...</span></div>
+        <div class="card" id="solde">Solde : <span id="totalSolde">...</span></div>
+    </div>
     
     <div id="total-depenses"></div>
 
     <script src="./js/main.js"></script>
+    <script src="./js/dashboard.js"></script>
 </body>
 </html>
