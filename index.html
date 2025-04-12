@@ -13,17 +13,19 @@
 
     <form id="addTransactionForm">
         <input type="number" id="amount" placeholder="Montant" required>
-        <select id="type">
-            <option value="expense">Dépense</option>
-            <option value="income">Revenu</option>
-        </select>
         <select id="category_id" required>
+            <option value="">--choisir la catégorie--</option>
             <option value="1">Nourriture</option>
             <option value="2">Loisirs</option>
             <option value="3">Logement</option>
             <option value="4">Facture</option>
             <option value="5">Revenu</option>
             option
+        </select>
+        <select id="type">
+            <option value="">--choisir le type--</option>
+            <option value="expense">Dépense</option>
+            <option value="income">Revenu</option>
         </select>
         <input type="text" id="description" placeholder="Description">
         <button type="submit">Ajouter</button>
