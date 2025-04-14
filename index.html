@@ -28,7 +28,7 @@
             <option value="income">Revenu</option>
         </select>
         <input type="text" id="description" placeholder="Description">
-        <button type="submit">Ajouter</button>
+        <button type="submit" id="valid">Ajouter</button>
     </form>
     <div id="validation" style="display: none;"></div>
     <div id="containerType">
@@ -41,6 +41,7 @@
                         <th>Montant</th>
                         <th>Catégorie</th>
                         <th>Description</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody id="depensesBody"></tbody>
@@ -55,6 +56,7 @@
                         <th>Montant</th>
                         <th>Catégorie</th>
                         <th>Description</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody id="revenusBody"></tbody>
@@ -71,8 +73,13 @@
     </div>
     
     <div id="total-depenses"></div>
+    <div>
+        <h2 id="graphe">Vue globale :</h2>
+        <canvas id="budgetChart" width="400" height="200"></canvas>
+    </div>
 
     <script src="./js/main.js"></script>
     <script src="./js/dashboard.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
 </html>

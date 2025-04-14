@@ -12,12 +12,49 @@ function loadTransactions() {
                     <td style="color:#f41d1d;">${parseFloat(transaction.amount).toFixed(2)} €</td>
                     <td>${transaction.category}</td>
                     <td>${transaction.description}</td>
+                    <td>
+                    <button data-id="${transaction.id}" class="delete-btn">❌</button>
+                    </td>
                 `;
                 tbody.appendChild(tr);
             })
         })
         .catch(err => console.error("Erreur de chargement des dépenses : ", err));
 }
+
+document.addEventListener('click', (e) => {
+    if (e.target.classList.contains('delete-btn')) {
+        const id = e.target.dataset.id;
+        if (confirm("Tu veux vraiment supprimer ça ?")) {
+            fetch('delete-transaction.php', {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/x-www-form-urlencoded'
+                },
+                body: `id=${id}`
+            })
+            .then(res => res.json())
+            .then(data => {
+                if(data.status === 'success') {
+                    const row = e.target.closest('tr');
+                    row.style.transition = 'opacity 0.5s';
+                    row.style.opacity = '0';
+
+                    setTimeout(() => {
+                        row.remove();
+                        loadDashboard();
+                    }, 500);
+                    // alert('Transaction supprimée 💥');
+                    // loadTransactions();
+                    // loadRevenus();
+                    // loadDashboard();
+                } else {
+                    alert('Suppression échouée 😕');
+                }
+            });
+        }
+    }
+});
 
 function loadRevenus() {
     fetch('get-revenu.php')
@@ -31,36 +68,16 @@ function loadRevenus() {
                     <td style="color:#35f41c;">${parseFloat(revenu.amount).toFixed(2)} €</td>
                     <td>${revenu.category}</td>
                     <td>${revenu.description}</td>
+                    <td>
+                    <button data-id="${revenu.id}" class="delete-btn">❌</button>
+                    </td>
+                    
                 `;
                 tbody.appendChild(tr)
             })
         })
         .catch(err => console.error("Erreur de chargement des revenus : ", err));
 }
-
-// function loadTotalDepenses() {
-//     fetch('total-depense.php')
-//         .then(res => res.json())
-//         .then(data => {
-//             const totalDepense = document.getElementById('totalDepense');
-//             const p = document.createElement('p')
-//             p.innerText = `${data} €`;
-//             totalDepense.appendChild(p);
-//         })
-        
-// }
-
-// function loadTotalRevenus() {
-//     fetch('total-revenu.php')
-//         .then(res => res.json())
-//         .then(data => {
-//             const totalRevenu = document.getElementById('totalRevenu');
-//             const p = document.createElement('p')
-//             p.innerText = `${data} €`;
-//             totalRevenu.appendChild(p);
-//         })
-        
-// }
 
 // Enregistrer une nouvelle transaction
 
@@ -91,7 +108,8 @@ document.getElementById('addTransactionForm').addEventListener('submit', functio
                 `
                 validation.style.display = "block";
                 loadTransactions();
-                loadRevenus()
+                loadRevenus();
+                loadDashboard();
             } else {
                 validation.innerHTML = `
                 <p>Erreur de validation</p>
@@ -102,5 +120,6 @@ document.getElementById('addTransactionForm').addEventListener('submit', functio
 
 
 
+
 loadTransactions();
-loadRevenus()
+loadRevenus();
