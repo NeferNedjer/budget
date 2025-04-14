@@ -61,30 +61,34 @@ budget/ │ ├── index.html # Page principale ├── css/ │ └── 
     🔗 GitHub @NeferNedjer
 
 -- Création de la base de données
-CREATE DATABASE IF NOT EXISTS budget CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE budget;
+
+    CREATE DATABASE IF NOT EXISTS budget CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+    USE budget;
 
 -- Table des catégories
-CREATE TABLE IF NOT EXISTS categories (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255) NOT NULL
-);
+
+    CREATE TABLE IF NOT EXISTS categories (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        name VARCHAR(255) NOT NULL
+    );
 
 -- Insertion de quelques catégories de base
-INSERT INTO categories (name) VALUES 
-('Nourriture'),
-('Loisirs'),
-('Logement'),
-('Facture'),
-('Revenu');
+
+    INSERT INTO categories (name) VALUES 
+    ('Nourriture'),
+    ('Loisirs'),
+    ('Logement'),
+    ('Facture'),
+    ('Revenu');
 
 -- Table des transactions
-CREATE TABLE IF NOT EXISTS transactions (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    amount DECIMAL(10, 2) NOT NULL,
-    type ENUM('income', 'expense') NOT NULL,
-    category_id INT NOT NULL,
-    date DATE NOT NULL DEFAULT CURRENT_DATE,
-    description TEXT,
-    FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE CASCADE
-);
+
+    CREATE TABLE IF NOT EXISTS transactions (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        amount DECIMAL(10, 2) NOT NULL,
+        type ENUM('income', 'expense') NOT NULL,
+        category_id INT NOT NULL,
+        date DATE NOT NULL DEFAULT CURRENT_DATE,
+        description TEXT,
+        FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE CASCADE
+    );
